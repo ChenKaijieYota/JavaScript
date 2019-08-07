@@ -34,3 +34,12 @@ function getViewportOffset() {
         }
     }
 }
+
+//封装兼容性方法，获取样式，prop传的是字符串
+function getStyle(elem, prop) {
+    if(window.getComputedStyle) {
+        return window.getComputedStyle(elem, null)[prop];
+    }else{
+        return elem.currentStyle[prop];
+    }
+}
