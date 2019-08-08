@@ -56,3 +56,12 @@ function addEvent(elem, type, handle) {
         elem['on'+type] = handle;
     }
 }
+
+//封装兼容性问题，取消冒泡的函数
+function stopBubble(event) {
+    if(event.stopPropagation) {
+        event.stopPropagation();
+    }else{
+        event.cancelBubble = true;
+    }
+}
