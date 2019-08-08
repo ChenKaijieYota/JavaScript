@@ -43,3 +43,16 @@ function getStyle(elem, prop) {
         return elem.currentStyle[prop];
     }
 }
+
+//封装兼容性方法，更好地绑定事件，处理函数
+function addEvent(elem, type, handle) {
+    if(elem.addEventListener) {//IE9以下不兼容
+        elem.addEventListener(type, handle, false);
+    }else if(elem.attachEvent) {//IE独有的
+        elem.attachEvent('on'+type, function () {
+            handle.call(elem);
+        })
+    }else{
+        elem['on'+type] = handle;
+    }
+}
