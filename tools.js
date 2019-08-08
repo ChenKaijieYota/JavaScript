@@ -65,3 +65,12 @@ function stopBubble(event) {
         event.cancelBubble = true;
     }
 }
+
+//封装阻止默认事件的函数,IE8以下还不能使用，试试return false
+function cancelHandler(event) {
+    if(event.preventDefault) {
+        event.preventDefault();
+    }else{
+        event.returnValue = false;
+    }
+}
